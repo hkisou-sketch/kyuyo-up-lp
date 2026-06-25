@@ -363,7 +363,25 @@ a{color:inherit;text-decoration:none}
 .vcard{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:30px;text-align:center;color:var(--muted);min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .vcard .badge{font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--gold-deep);background:var(--mint);border:1px solid var(--line);padding:6px 14px;border-radius:999px;margin-bottom:14px}
 .vcard p{font-size:.96rem;line-height:1.7}
-@media(max-width:860px){.logos{grid-template-columns:repeat(3,1fr)}.voice__grid{grid-template-columns:1fr}}
+/* FEATURED CASE */
+.case{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.case__top{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;padding:26px 34px;background:linear-gradient(120deg,var(--ink),var(--ink-2));color:#fff}
+.case__badge{font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.1em;color:var(--ink);background:var(--tiffany-bright);padding:6px 14px;border-radius:999px;flex:0 0 auto}
+.case__co{font-family:var(--jp);font-weight:900;font-size:1.32rem;letter-spacing:.01em}
+.case__meta{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.case__meta span{font-size:.84rem;color:var(--on-dark);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 13px}
+.case__body{padding:34px}
+.case__lead{font-family:var(--jp);font-weight:900;font-size:clamp(1.3rem,2.6vw,1.92rem);line-height:1.5;color:var(--ink);margin-bottom:28px}
+.case__lead .c{color:var(--tiffany-deep)}.case__lead .g{color:var(--gold-deep)}
+.case__kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:30px}
+.cstat{background:var(--mint-2);border:1px solid var(--line);border-radius:16px;padding:22px 16px;text-align:center}
+.cstat__v{font-family:var(--mono);font-weight:700;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1;color:var(--tiffany-deep)}
+.cstat__v.gold{color:var(--gold-deep)}
+.cstat__v .u{font-family:var(--jp);font-size:.4em;font-weight:700;margin-left:1px}
+.cstat__l{font-size:.86rem;color:var(--muted);margin-top:11px;line-height:1.5}
+.case__txt{font-size:1.04rem;color:var(--muted);line-height:1.95}
+@media(max-width:860px){.logos{grid-template-columns:repeat(3,1fr)}.voice__grid{grid-template-columns:1fr}.case__kpis{grid-template-columns:1fr 1fr}.case__meta{margin-left:0;width:100%}}
+@media(max-width:560px){.case__body{padding:24px}.case__top{padding:22px}}
 .scard__link{margin-top:16px;font-family:var(--jp);font-weight:700;font-size:.92rem;color:var(--tiffany-deep);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
 .scard__link:hover{gap:10px;color:var(--tiffany)}
 .scard__link .arr{transition:transform .2s}.scard__link:hover .arr{transform:translateX(2px)}
@@ -662,7 +680,7 @@ a{color:inherit;text-decoration:none}
     <div class="section__head reveal">
       <span class="eyebrow">導入事例・お客様の声</span>
       <h2 class="sec-head">多様な業種で、成果が生まれています。</h2>
-      <p class="lead">ホテル・美容・IT・飲食・不動産など、業種を横断して支援しています。導入企業ロゴと事例は、順次掲載予定です。</p>
+      <p class="lead">医療・福祉から、ホテル・美容・IT・飲食・不動産まで。業種を横断して、利益と給与の成果につなげています。</p>
     </div>
     <div class="logos reveal" aria-label="導入企業ロゴ（準備中）">
       <span class="logo-ph">LOGO</span>
@@ -672,10 +690,22 @@ a{color:inherit;text-decoration:none}
       <span class="logo-ph">LOGO</span>
       <span class="logo-ph">LOGO</span>
     </div>
-    <div class="voice__grid reveal">
-      <div class="vcard"><span class="badge">CASE 01</span><p>導入事例を準備中です。<br>近日公開いたします。</p></div>
-      <div class="vcard"><span class="badge">CASE 02</span><p>導入事例を準備中です。<br>近日公開いたします。</p></div>
-      <div class="vcard"><span class="badge">CASE 03</span><p>導入事例を準備中です。<br>近日公開いたします。</p></div>
+    <div class="case reveal">
+      <div class="case__top">
+        <span class="case__badge">CASE 01</span>
+        <span class="case__co">株式会社ファーストケア</span>
+        <div class="case__meta"><span>医療・福祉</span><span>従業員数 30人</span></div>
+      </div>
+      <div class="case__body">
+        <p class="case__lead">評価制度改革で、<span class="c">離職率60％改善</span>・<span class="g">売上150％成長</span>を実現。</p>
+        <div class="case__kpis">
+          <div class="cstat"><div class="cstat__v">60<span class="u">％</span></div><div class="cstat__l">離職率を改善</div></div>
+          <div class="cstat"><div class="cstat__v">171<span class="u">％</span></div><div class="cstat__l">採用数 増加</div></div>
+          <div class="cstat"><div class="cstat__v gold">150<span class="u">％</span></div><div class="cstat__l">売上 成長</div></div>
+          <div class="cstat"><div class="cstat__v">0<span class="u">件</span></div><div class="cstat__l">ヒヤリハット 維持</div></div>
+        </div>
+        <p class="case__txt">社員数の増加に伴い人事評価制度の整備を検討していましたが、自社で進める時間やノウハウが不足していました。複数社を比較する中で、制度設計から運用支援、補助金活用まで一貫したサポートに魅力を感じ導入。その結果、離職率60％改善、採用数171％増、売上150％成長を実現し、新事業所の展開やヒヤリハット0件の維持にもつながっています。</p>
+      </div>
     </div>
   </div>
 </section>
