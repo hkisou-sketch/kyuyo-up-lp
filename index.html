@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="logo-mark.png">
 <title>中小企業の利益を2倍にする Claude Code経営パートナー｜給与アップ研究所</title>
 <meta name="description" content="Claude Code を営業・マーケ・人事・業務の現場に入れて、利益を増やす。生まれた利益を給与に変える。成果が出るまで伴走する経営パートナー。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +54,7 @@ a{color:inherit;text-decoration:none}
 .nav__row{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--jp);font-weight:900;font-size:1.12rem;color:#fff;letter-spacing:.02em;transition:color .3s}
 .nav.scrolled .brand{color:var(--ink)}
-.brand__mark{width:32px;height:32px;flex:0 0 auto}
+.brand__mark{width:34px;height:26px;flex:0 0 auto;background:currentColor;-webkit-mask:url(logo-mark.png) center/contain no-repeat;mask:url(logo-mark.png) center/contain no-repeat}
 .nav__links{display:flex;align-items:center;gap:28px}
 .nav__links a{font-size:1rem;font-weight:500;color:rgba(255,255,255,.9);transition:color .25s}
 .nav.scrolled .nav__links a{color:var(--text)}
@@ -375,11 +376,7 @@ a{color:inherit;text-decoration:none}
 <nav class="nav" id="nav">
   <div class="wrap nav__row">
     <a href="#top" class="brand">
-      <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <rect x="1.5" y="1.5" width="37" height="37" rx="11" stroke="currentColor" stroke-opacity=".25" stroke-width="1.5"/>
-        <path d="M20 27.5V13M20 13l-6 6.2M20 13l6 6.2" stroke="#0ABAB5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M13.5 27.5h13" stroke="#E8A23C" stroke-width="3" stroke-linecap="round"/>
-      </svg>
+      <span class="brand__mark" aria-hidden="true"></span>
       給与アップ研究所
     </a>
     <div class="nav__links" id="navlinks">
@@ -700,11 +697,7 @@ a{color:inherit;text-decoration:none}
     <div class="footer__top">
       <div class="footer__brand">
         <div class="b">
-          <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <rect x="1.5" y="1.5" width="37" height="37" rx="11" stroke="currentColor" stroke-opacity=".25" stroke-width="1.5"/>
-            <path d="M20 27.5V13M20 13l-6 6.2M20 13l6 6.2" stroke="#0ABAB5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13.5 27.5h13" stroke="#E8A23C" stroke-width="3" stroke-linecap="round"/>
-          </svg>
+          <span class="brand__mark" aria-hidden="true"></span>
           給与アップ研究所
         </div>
         <p>中小・ベンチャーのAI駆動経営 伴走パートナー。Claude Codeで成果を出し、評価で給与に変える会社です。</p>
