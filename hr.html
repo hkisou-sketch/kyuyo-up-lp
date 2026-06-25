@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人事｜AI人事評価（制度設計×AI実装×運用伴走）｜給与アップ研究所</title>
+<meta name="description" content="制度は作れる時代、本当の差は運用に出る。AI×BPOの二層伴走で成果を評価し給与に変える。KPIを自動計測し四半期PDCAで12か月伴走するAI人事評価サービス。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--tiffany:#0ABAB5;--tiffany-bright:#23DACB;--tiffany-deep:#0A7A73;--ink:#07211F;--ink-2:#0C302C;--gold:#E8A23C;--gold-bright:#F6C879;--gold-deep:#A86F1E;--mint:#EAF7F5;--mint-2:#F4FBFA;--paper:#fff;--text:#14302D;--muted:#526764;--line:#D9ECE9;--on-dark:#EDF7F5;--on-dark-muted:#A9C8C4;--maxw:1180px;--shadow:0 18px 50px -24px rgba(7,33,31,.30);--shadow-soft:0 8px 28px -18px rgba(7,33,31,.30);--jp:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;--body:"Noto Sans JP",sans-serif;--mono:"Space Grotesk",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:106.25%}
+body{font-family:var(--body);color:var(--text);background:var(--paper);line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{font-family:var(--mono);font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tiffany-deep);display:inline-block}
+.eyebrow.on-dark{color:var(--tiffany-bright)}
+.btn{font-family:var(--jp);font-weight:700;font-size:1.02rem;padding:15px 30px;border-radius:999px;cursor:pointer;border:0;display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,box-shadow .2s,color .2s}
+.btn .arr{transition:transform .2s}.btn:hover .arr{transform:translateX(3px)}
+.btn--primary{background:var(--tiffany);color:#04302c;box-shadow:0 14px 34px -14px rgba(10,186,181,.8)}
+.btn--primary:hover{background:var(--tiffany-deep);color:#fff;transform:translateY(-2px)}
+.btn--gold{background:var(--gold);color:#241402;box-shadow:0 14px 34px -14px rgba(232,162,60,.8)}
+.btn--gold:hover{background:var(--gold-deep);color:#fff;transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn--ghost:hover{border-color:var(--tiffany-bright);color:var(--tiffany-bright)}
+.btn--ghost.dark{color:var(--ink);border-color:var(--line)}.btn--ghost.dark:hover{border-color:var(--tiffany);color:var(--tiffany-deep)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s;padding:16px 0}
+.nav.scrolled{background:rgba(7,33,31,.94);backdrop-filter:saturate(150%) blur(12px);box-shadow:0 1px 0 rgba(255,255,255,.08);padding:11px 0}
+.nav__row{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--jp);font-weight:800;font-size:1.05rem;color:#fff}
+.brand .mk{width:28px;height:28px;border-radius:8px;background:var(--tiffany);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex:0 0 auto}
+.brand small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:var(--tiffany-bright);font-weight:500}
+.nav__links{display:flex;align-items:center;gap:22px}
+.nav__links a{font-size:.95rem;color:var(--on-dark-muted);transition:color .2s}.nav__links a:hover{color:var(--tiffany-bright)}
+.nav__cta{font-weight:700;background:var(--tiffany);color:var(--ink)!important;padding:10px 20px;border-radius:999px}
+.nav__cta:hover{background:var(--tiffany-deep);color:#fff!important}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:25px;height:2px;background:#fff}
+.hero{position:relative;min-height:84vh;display:flex;align-items:center;color:var(--on-dark);padding:140px 0 70px;overflow:hidden;background:radial-gradient(120% 120% at 75% 12%,#0e4f49 0%,var(--ink-2) 45%,var(--ink) 100%)}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.4px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);opacity:.5}
+.hero__in{position:relative;z-index:2;max-width:880px}
+.hero .eyebrow{color:var(--gold);margin-bottom:20px}
+.hero h1{font-family:var(--jp);font-weight:900;color:#fff;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.3;margin-bottom:20px}
+.hero h1 .c{color:var(--tiffany-bright)}.hero h1 .g{color:var(--gold)}
+.hero p.sub{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--on-dark-muted);line-height:1.9;max-width:690px;margin-bottom:32px}
+.hero p.sub b{color:#fff;font-weight:700}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap}
+.hstats{position:relative;z-index:2;margin-top:54px;padding-top:30px;border-top:1px solid rgba(255,255,255,.14);display:flex;gap:48px;flex-wrap:wrap}
+.hstat .v{font-family:var(--mono);font-weight:700;font-size:clamp(1.6rem,2.8vw,2.1rem);color:#fff}.hstat .v em{font-style:normal;color:var(--tiffany-bright)}
+.hstat .l{font-size:.86rem;color:var(--on-dark-muted);margin-top:6px;line-height:1.5}
+.sec{padding:88px 0}.sec--mint{background:var(--mint-2)}.sec--paper{background:#fff}.sec--dark{background:var(--ink);color:var(--on-dark)}
+.head{max-width:800px;margin-bottom:44px}.head.center{margin:0 auto 44px;text-align:center}
+.head .eyebrow{margin-bottom:16px}
+.head h2{font-family:var(--jp);font-weight:800;font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1.42;color:var(--ink)}
+.sec--dark .head h2{color:#fff}
+.head p{color:var(--muted);font-size:1.1rem;line-height:1.85;margin-top:14px}.sec--dark .head p{color:var(--on-dark-muted)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
+.card .big{font-family:var(--mono);font-weight:700;font-size:2.3rem;color:var(--tiffany-deep);line-height:1;margin-bottom:12px}
+.card .big.gold{color:var(--gold-deep)}.card .big.red{color:#c9544f}
+.card .kno{font-family:var(--mono);font-weight:700;color:var(--tiffany-deep);font-size:.85rem;margin-bottom:8px}
+.card h3{font-family:var(--jp);font-weight:800;font-size:1.16rem;color:var(--ink);margin-bottom:10px;line-height:1.45}
+.card p{font-size:.97rem;color:var(--muted);line-height:1.8}.card p b{color:var(--text)}
+.card--dark{background:linear-gradient(160deg,var(--ink),var(--ink-2));border:0;color:var(--on-dark)}.card--dark h3{color:#fff}.card--dark p{color:var(--on-dark-muted)}.card--dark .kno{color:var(--tiffany-bright)}
+.card--g{background:linear-gradient(160deg,var(--tiffany-deep),var(--tiffany));border:0;color:#fff}.card--g h3{color:#fff}.card--g p{color:rgba(255,255,255,.92)}
+.lead-close{text-align:center;font-family:var(--jp);font-weight:800;font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--ink);line-height:1.55;margin-top:34px}.lead-close .hl{color:var(--tiffany-deep)}.lead-close .g{color:var(--gold-deep)}
+.sec--dark .lead-close{color:#fff}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.step{padding:0 22px;position:relative}.step+.step{border-left:1px dashed var(--line)}
+.step .n{font-family:var(--mono);font-weight:700;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--tiffany);color:var(--tiffany-deep);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:.85rem}
+.step h4{font-family:var(--jp);font-weight:800;font-size:1.1rem;color:var(--ink);margin-bottom:8px}.step p{font-size:.92rem;color:var(--muted);line-height:1.7}
+.flowline{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.flowline .fc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 15px;font-family:var(--jp);font-weight:700;font-size:.92rem;color:var(--ink)}
+.flowline .fc.gold{background:var(--gold);border-color:var(--gold);color:#241402}.flowline .fs{color:var(--gold-deep);font-weight:800}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}.chip{font-family:var(--jp);font-weight:700;font-size:.92rem;background:#fff;color:var(--tiffany-deep);border:1px solid var(--line);padding:10px 17px;border-radius:999px}
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch}
+.ba__b,.ba__a{border-radius:16px;padding:24px;border:1px solid var(--line)}.ba__b{background:#fff}.ba__a{background:linear-gradient(160deg,#0a2e2c,#0e4a43);color:#fff;border-color:transparent}
+.ba__t{font-family:var(--mono);font-weight:700;font-size:.76rem;letter-spacing:.08em;margin-bottom:6px}.ba__b .ba__t{color:var(--muted)}.ba__a .ba__t{color:var(--tiffany-bright)}
+.ba__title{font-family:var(--jp);font-weight:800;color:var(--ink);margin-bottom:16px;font-size:1.05rem}.ba__a .ba__title{color:#fff}
+.ba ul{list-style:none;display:flex;flex-direction:column;gap:9px}.ba li{font-size:.94rem;line-height:1.55;padding-left:18px;position:relative}
+.ba__b li{color:var(--muted)}.ba__b li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--line)}
+.ba__a li{color:rgba(255,255,255,.92)}.ba__a li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--tiffany-bright)}
+.ba__mid{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;color:var(--gold);font-size:.82rem}
+.ba__wrap{margin-bottom:26px}.ba__cut{font-family:var(--jp);font-weight:800;color:var(--gold-deep);margin-bottom:10px;font-size:1.02rem}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px;display:flex;flex-direction:column}
+.plan--reco{border:2px solid var(--tiffany);box-shadow:var(--shadow);position:relative}
+.plan__badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#241402;font-family:var(--jp);font-weight:700;font-size:.72rem;padding:6px 16px;border-radius:999px;white-space:nowrap}
+.plan__name{font-family:var(--jp);font-weight:800;font-size:1.2rem;color:var(--ink)}
+.plan__sub{font-size:.84rem;color:var(--tiffany-deep);font-weight:700;margin-bottom:14px}
+.plan__price{font-family:var(--mono);font-weight:700;font-size:1.8rem;color:var(--ink);margin-bottom:16px}.plan__price small{font-size:.85rem;color:var(--muted)}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:6px}.plan li{font-size:.92rem;color:var(--muted);padding-left:22px;position:relative;line-height:1.6}
+.plan li::before{content:"\2713";position:absolute;left:0;color:var(--tiffany);font-weight:700}
+.box{background:linear-gradient(155deg,#06201e,#0b332e);border-radius:22px;padding:36px 42px;color:var(--on-dark);box-shadow:var(--shadow)}
+.box .eyebrow{color:var(--gold);margin-bottom:14px}
+.box h3{font-family:var(--jp);font-weight:800;color:#fff;font-size:clamp(1.2rem,2.4vw,1.65rem);line-height:1.5;margin-bottom:10px}.box h3 .c{color:var(--tiffany-bright)}.box h3 .g{color:var(--gold)}
+.box p{color:var(--on-dark-muted);line-height:1.85}.box p b{color:#fff}
+.note{font-size:.84rem;color:var(--muted);margin-top:14px}.sec--dark .note,.box .note{color:rgba(255,255,255,.6)}
+.cta{background:radial-gradient(800px 420px at 78% 0%,rgba(35,218,203,.22),transparent 60%),linear-gradient(160deg,#06201e,#0b3733);color:#fff;padding:92px 0;text-align:center}
+.cta h2{font-family:var(--jp);font-weight:900;font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.35;margin-bottom:16px}.cta h2 .c{color:var(--tiffany-bright)}.cta h2 .g{color:var(--gold)}
+.cta p{color:var(--on-dark-muted);font-size:1.1rem;margin-bottom:34px;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.85}
+.cta__b{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.foot{background:#041614;color:var(--on-dark-muted);padding:54px 0 30px}
+.foot__row{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:28px;margin-bottom:22px}
+.foot .brand{margin-bottom:12px}.foot p{font-size:.92rem;line-height:1.8;max-width:360px}
+.foot__links{display:flex;gap:24px;flex-wrap:wrap}.foot__links a{font-size:.92rem;color:var(--on-dark-muted)}.foot__links a:hover{color:#fff}
+.foot__bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.8rem}.mono{font-family:var(--mono)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}.reveal.in{opacity:1;transform:none}
+@media(max-width:900px){.grid3,.grid4,.grid5{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr;gap:30px 0}.step:nth-child(3){border-left:0}.ba{grid-template-columns:1fr}.ba__mid{transform:rotate(90deg)}}
+@media(max-width:760px){.nav__links{position:fixed;inset:0 0 0 auto;width:min(80vw,320px);height:100vh;background:#06201e;flex-direction:column;align-items:flex-start;justify-content:center;padding:40px;gap:22px;transform:translateX(100%);transition:transform .35s}.nav__links.open{transform:none}.nav__links a{color:#fff;font-size:1.1rem}.burger{display:flex;z-index:101}.grid2,.grid3,.grid4,.grid5{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.step+.step{border-left:0}}
+@media(max-width:560px){html{font-size:103%}.wrap{padding:0 20px}.hero{padding:120px 0 56px}.sec{padding:62px 0}.box,.cta{padding:30px 22px}.plan{padding:24px}.hstats{gap:28px}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav"><div class="wrap nav__row"><a href="index.html" class="brand"><span class="mk">▲</span><span>給与アップ研究所<small>HR ／ AI人事評価</small></span></a><div class="nav__links" id="navlinks"><a href="#why">課題</a><a href="#approach">アプローチ</a><a href="#core">しくみ</a><a href="#plan">サービス</a><a href="index.html">会社トップ</a><a href="#contact" class="nav__cta">無料で相談する</a></div><button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button></div></nav>
+<header class="hero"><div class="wrap hero__in">
+<span class="eyebrow">HR ／ AI人事評価</span>
+<h1>制度は「作れる」時代。<br>本当の差は、<span class="g">「運用」</span>に出る。</h1>
+<p class="sub">AIで作った制度を、形骸化させない。<b>AI × BPOの二層伴走</b>で、成果を評価し、給与に変える。成果が出るまで、止めずに伴走します。</p>
+<div class="hero__cta"><a href="#contact" class="btn btn--primary">無料で相談する<span class="arr">→</span></a><a href="#core" class="btn btn--ghost">運用のしくみを見る</a></div>
+<div class="hstats">
+<div class="hstat"><div class="v">4,000<em>社</em></div><div class="l">人事評価改革の<br>支援実績（代表 累計）</div></div>
+<div class="hstat"><div class="v">12<em>か月</em></div><div class="l">四半期PDCAで<br>運用を伴走</div></div>
+<div class="hstat"><div class="v">月10<em>万円以下</em></div><div class="l">実質負担（税別）<br>※助成金活用後</div></div>
+</div></div></header>
+<section class="sec sec--mint" id="why"><div class="wrap">
+<div class="head reveal"><span class="eyebrow">WHY IT HAPPENS</span><h2>なぜ“運用”で、しくじるのか。</h2>
+<p>“作る”は速くなった。だが“育てる”は、AIだけでは回らない。落とし穴は、設計・導入・運用・定着の全フェーズに潜みます。</p></div>
+<div class="grid3">
+<div class="card reveal"><div class="kno">STORY 01</div><h3>気づけば、全員Bランク</h3><p>立派な評価シートはできた。だが評価者研修はゼロ。期末、各マネージャーは無難に全員“B”。差はつかず、エースは「ここでは報われない」と去っていく。</p></div>
+<div class="card reveal"><div class="kno">STORY 02</div><h3>頑張っても、給料は1円も変わらない</h3><p>制度はある。面談もする。でも結果は給与にも賞与にもつながらない。社員はすぐ学習する——「評価は、こなすだけのイベントだ」と。</p></div>
+<div class="card reveal"><div class="kno">STORY 03</div><h3>“あの人”が辞めた日、制度は止まった</h3><p>運用はすべて担当者頼み。集計も日程も彼女の頭の中だけ。退職後、引き継ぎ資料は無く、次の評価サイクルは延期のまま消滅した。</p></div>
+</div>
+<p class="lead-close reveal">自社“だけ”では、防げない。<span class="hl">AIは検出できても、合意・調整・意思決定は“人”の領域。</span></p>
+</div></section>
+
+<section class="sec sec--paper" id="approach"><div class="wrap">
+<div class="head center reveal"><span class="eyebrow">THE ANTIDOTE</span><h2>AI × 人 × BPO伴走で、先回りして防ぐ。</h2>
+<p>これらは全部、自社“だけ”で運用した結末。仕組みと伴走で、起きる前に封じます。</p></div>
+<div class="grid4">
+<div class="card reveal"><h3>先回りで潰す</h3><p>形骸化する“しくじり”を、起きる前に封じる四半期PDCAの運用設計。</p></div>
+<div class="card reveal"><h3>AIで自動計測</h3><p>甘辛・分布・未達・給与連動をデータで可視化し、意思決定を支援する。</p></div>
+<div class="card reveal"><h3>BPOで肩代わり</h3><p>集計・催促・面談同席・査定事務を、伴走チームが代行する。</p></div>
+<div class="card reveal"><h3>第一人者の知見</h3><p>4,000社の評価改革ノウハウで、“合意・調整・定着”を設計する。</p></div>
+</div>
+<p class="lead-close reveal">“作って終わり”ではなく、<span class="hl">“育て続ける”評価制度へ。</span></p>
+</div></section>
+
+<section class="sec sec--dark" id="core"><div class="wrap">
+<div class="head center reveal"><span class="eyebrow on-dark">DELIVERY MODEL</span><h2>AI × BPO の、二層伴走。</h2>
+<p>手と時間を肩代わりするBPOと、自動で回し続けるAI。両方を1社で持つのが、私たちの強みです。</p></div>
+<div class="grid2">
+<div class="card card--dark reveal"><div class="kno">BPO 層 ／ 手と時間を肩代わり</div><h3>事務を、伴走チームが代行</h3><p>提出物の催促・回収と期日管理／各種データの集計・レポート化／評価者の中間面談に同席・支援／査定調整会議の事務・資料準備。</p></div>
+<div class="card card--dark reveal"><div class="kno">AI 層 ／ Claude Codeが自動化</div><h3>計測・分析・試算を、自動で</h3><p>工数・KPI・商談データを自動計測／甘辛・分布・未達をAIが分析／未提出を自動検知しアラート／昇給・賞与・人件費を自動試算。</p></div>
+</div>
+<p class="lead-close reveal" style="color:#fff">両方を1社で持つから、自社運用が<span class="hl">「止まらない・形骸化しない」。</span></p>
+<div style="margin-top:30px"><div class="head center" style="margin-bottom:22px"><span class="eyebrow on-dark">AUTO-MEASURE</span></div>
+<div class="chips reveal"><span class="chip">カレンダー → 工数</span><span class="chip">SFA / CRM → KPI・ファネル</span><span class="chip">日報 → 行動・負荷</span><span class="chip">Zoom録画 → 商談品質</span><span class="chip">勤怠 → 働き方</span><span class="chip" style="background:var(--gold);border-color:var(--gold);color:#241402">→ 評価シートへ</span></div>
+<p class="note reveal" style="text-align:center">自己申告に頼っていた“行動・定性”を、実データで客観化。「丁寧に対応する」→「商談品質スコア80点以上」のように、測れる行動KPIへ書き換えます。</p></div>
+</div></section>
+
+<section class="sec sec--mint" id="plan"><div class="wrap">
+<div class="head center reveal"><span class="eyebrow">OUR SERVICE</span><h2>5つのサービスで、導入から自走まで。</h2>
+<p>「AIで成果を出し、評価で給与に変える」——ワンパッケージで、一気通貫に伴走します。</p></div>
+<div class="grid5" style="margin-bottom:26px">
+<div class="card reveal"><div class="kno">01</div><h3>研修動画</h3><p>AI活用スキルを全社員へ。動画でいつでも学べる。</p></div>
+<div class="card reveal"><div class="kno">02</div><h3>Claudeコンサル</h3><p>業務にClaude Codeを実装。業務特化スキルを共同開発。</p></div>
+<div class="card reveal"><div class="kno">03</div><h3>人事評価制度設計</h3><p>等級・評価基準・給与テーブルまで設計。</p></div>
+<div class="card reveal"><div class="kno">04</div><h3>Claude運用支援</h3><p>月次伴走でAI活用を定着・横展開。</p></div>
+<div class="card reveal"><div class="kno">05</div><h3>人事評価運用支援</h3><p>四半期PDCAで評価を回し改善（12か月）。</p></div>
+</div>
+<div class="box reveal"><span class="eyebrow on-dark">COST</span><h3>内製は“安く見えて、高い”。実質 <span class="g">月10万円以下</span>（税別）。</h3><p>制度設計・AI自動計測・運用伴走のすべてを1社で完結できるのは、給与アップ研究所だけ。<b>同じコストで、“作って終わり”ではなく“回り続ける”評価制度へ。</b></p><p class="note">※ 30名規模・1年目の試算例。実質負担は助成金等の活用後で、要件により異なります。実数は御社条件で再計算します。</p></div>
+</div></section>
+<section class="cta" id="contact"><div class="wrap"><h2>成果を、<span class="c">給与</span>に。評価を、<span class="g">希望</span>に。</h2><p>制度を、作って終わりにしない。成果が出るまで伴走します。まずは無料相談・業務棚卸から始めましょう。</p><div class="cta__b"><a href="#" class="btn btn--gold">無料で相談する<span class="arr">→</span></a><a href="index.html" class="btn btn--ghost">会社全体を見る</a></div></div></section>
+<footer class="foot"><div class="wrap"><div class="foot__row"><div><div class="brand"><span class="mk">▲</span><span>給与アップ研究所</span></div><p>中小・ベンチャーのAI駆動経営 伴走パートナー。Claude Codeで成果を出し、評価で給与に変える会社です。</p></div><div class="foot__links"><a href="marketing.html">マーケ｜AI集客</a><a href="sales.html">営業｜商談AI</a><a href="hr.html">人事｜AI人事評価</a><a href="operations.html">業務｜業務改善</a><a href="index.html">会社トップ</a></div></div><div class="foot__bottom"><span>© 2026 株式会社給与アップ研究所</span><span class="mono">POWERED BY Claude Code × MCP</span></div></div></footer>
+<script>(function(){var n=document.getElementById("nav");var s=function(){if(window.scrollY>40){n.classList.add("scrolled")}else{n.classList.remove("scrolled")}};s();window.addEventListener("scroll",s,{passive:true});var b=document.getElementById("burger"),l=document.getElementById("navlinks");b.addEventListener("click",function(){l.classList.toggle("open")});l.addEventListener("click",function(e){if(e.target.tagName==="A"){l.classList.remove("open")}});var r=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var rv=document.querySelectorAll(".reveal");if(r||!("IntersectionObserver" in window)){rv.forEach(function(el){el.classList.add("in")})}else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.12,rootMargin:"0px 0px -8% 0px"});rv.forEach(function(el){io.observe(el)})}})();</script>
+</body>
+</html>

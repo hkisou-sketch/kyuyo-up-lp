@@ -75,6 +75,8 @@ a{color:inherit;text-decoration:none}
 .hero__text{position:relative;z-index:2;max-width:900px}
 .hero .eyebrow{margin-bottom:22px}
 .hero h1{font-family:var(--jp);font-weight:900;color:#fff;font-size:clamp(2rem,4.7vw,3.5rem);line-height:1.28;letter-spacing:.01em;margin-bottom:18px}
+.hero h1 .c{color:var(--tiffany-bright)}
+.hero h1 .g{color:var(--gold)}
 .hero__tag{font-family:var(--jp);font-weight:700;color:#fff;font-size:clamp(1.12rem,1.9vw,1.42rem);line-height:1.6;margin-bottom:18px}
 .hero__tag .num{font-family:var(--mono);font-weight:700;color:var(--gold);font-feature-settings:"tnum";white-space:nowrap}
 .hero__tag .pay{color:var(--tiffany-bright)}
@@ -109,7 +111,7 @@ a{color:inherit;text-decoration:none}
 .gchip .d{color:var(--on-dark-muted);font-family:var(--jp);font-size:.82em;margin-right:3px}
 
 /* HERO stats */
-.hero__stats{position:relative;z-index:2;margin-top:60px;padding-top:34px;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.hero__stats{position:relative;z-index:2;margin-top:60px;padding-top:34px;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .stat .v{font-family:var(--mono);font-weight:700;font-size:clamp(1.7rem,3vw,2.2rem);color:#fff;line-height:1.1}
 .stat .v em{font-style:normal;color:var(--tiffany-bright)}
 .stat .l{font-size:.95rem;color:var(--on-dark-muted);margin-top:6px;line-height:1.6}
@@ -340,6 +342,31 @@ a{color:inherit;text-decoration:none}
   .reveal{opacity:1;transform:none;transition:none}
   .col__bar.now,.col__bar.next{animation:none}
 }
+
+/* 代表メッセージ */
+.message{background:linear-gradient(160deg,var(--ink),var(--ink-2));color:var(--on-dark)}
+.message__inner{max-width:860px;margin:0 auto}
+.message .eyebrow{margin-bottom:20px}
+.message__h{font-family:var(--jp);font-weight:900;color:#fff;font-size:clamp(1.55rem,3.1vw,2.35rem);line-height:1.45;margin-bottom:8px}
+.message__h .c{color:var(--tiffany-bright)}.message__h .g{color:var(--gold)}
+.message__body{margin-top:26px}
+.message__body p{font-size:1.05rem;line-height:2;color:var(--on-dark);margin-bottom:16px}
+.message__body p b{color:#fff;font-weight:700}
+.message__sign{margin-top:26px;font-size:.95rem;color:var(--on-dark-muted)}
+.message__sign b{display:block;font-size:1.25rem;color:#fff;font-weight:800;margin-top:6px;font-family:var(--jp)}
+/* 導入事例・ロゴ（仮枠） */
+.voice{background:var(--mint-2)}
+.logos{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-bottom:42px}
+.logo-ph{height:66px;border:1px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#9fb6b2;font-family:var(--mono);font-weight:700;letter-spacing:.12em;font-size:.78rem;background:#fff}
+.voice__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vcard{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:30px;text-align:center;color:var(--muted);min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.vcard .badge{font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--gold-deep);background:var(--mint);border:1px solid var(--line);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.vcard p{font-size:.96rem;line-height:1.7}
+@media(max-width:860px){.logos{grid-template-columns:repeat(3,1fr)}.voice__grid{grid-template-columns:1fr}}
+.scard__link{margin-top:16px;font-family:var(--jp);font-weight:700;font-size:.92rem;color:var(--tiffany-deep);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.scard__link:hover{gap:10px;color:var(--tiffany)}
+.scard__link .arr{transition:transform .2s}.scard__link:hover .arr{transform:translateX(2px)}
+.scard--emph .scard__link{color:var(--tiffany-bright)}
 </style>
 </head>
 <body>
@@ -360,6 +387,7 @@ a{color:inherit;text-decoration:none}
       <a href="#services">4領域のサービス</a>
       <a href="#whyus">選ばれる理由</a>
       <a href="#founders">私たちについて</a>
+      <a href="#message">代表メッセージ</a>
       <a href="#contact" class="nav__cta">無料で相談する</a>
     </div>
     <button class="nav__burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
@@ -370,9 +398,10 @@ a{color:inherit;text-decoration:none}
 <header class="hero" id="top">
   <div class="wrap">
     <div class="hero__text">
-      <h1 class="hero__h1">中小企業の利益を2倍にする、<br>Claude Code経営パートナー。</h1>
-      <p class="hero__tag">利益を、<span class="num" id="heroNum">2.0736</span>倍に。その原資を、<span class="pay">給与</span>に変える。</p>
-      <p class="hero__sub">Claude Code を、営業・マーケ・人事・業務の現場に入れて、利益を増やす。「入れて終わり」にせず、成果が出るまで伴走します。</p>
+      <span class="eyebrow on-dark">中小・ベンチャーのAI駆動経営 伴走パートナー</span>
+        <h1 class="hero__h1">Claude Codeで成果を出し、<br><span class="c">評価</span>で<span class="g">給与</span>に変える。</h1>
+      <p class="hero__sub">社内に眠るデータをAIで読み解き、一人ひとりの貢献を可視化。成果を正しく評価し、給与へ連動させる――「入れて終わり」にしない、AI駆動経営の伴走パートナーです。</p>
+      
       <div class="hero__cta">
         <a href="#contact" class="btn btn--primary">無料で相談する<span class="arr">→</span></a>
         <a href="#services" class="btn btn--ghost">4領域のサービスを見る</a>
@@ -380,10 +409,10 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <div class="hero__stats">
-      <div class="stat"><div class="v">3,500<em>社</em></div><div class="l">人事評価制度の<br>構築・運用を支援</div></div>
-      <div class="stat"><div class="v">500<em>社</em></div><div class="l">業務改善メソッド<br>5年の実績</div></div>
-      <div class="stat"><div class="v">15<em>冊+</em></div><div class="l">ビジネス書を<br>出版（一部は下記）</div></div>
-      <div class="stat"><div class="v">5,000<em>回+</em></div><div class="l">セミナー<br>登壇の実績</div></div>
+      <div class="stat"><div class="v">3<em>万社+</em></div><div class="l">人事評価制度の<br>監修実績（20年）</div></div>
+      <div class="stat"><div class="v">500<em>名</em></div><div class="l">自ら創業し全国47都道府県<br>＆アジアへ拡大</div></div>
+      <div class="stat"><div class="v">1,500<em>円</em></div><div class="l">最低賃金時代の<br>賃上げを根拠で支える</div></div>
+      
     </div>
   </div>
 </header>
@@ -401,7 +430,7 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="founders__head reveal">
       <span class="eyebrow">私たちについて</span>
-      <h2 class="sec-head">事業を知る人と、AIを知る人。<br>二人で、あなたの会社の利益に向き合います。</h2>
+      <h2 class="sec-head">事業を知る人と、AIを知る人。<br>二人で、あなたの会社の成果に向き合います。</h2>
       <p class="lead">「誰が伴走してくれるのか」。大切なことなので、まず私たち二人のことをお伝えします。</p>
     </div>
 
@@ -415,12 +444,12 @@ a{color:inherit;text-decoration:none}
           </div>
         </div>
         <div class="fcard__line">事業を、20年つくってきた人。</div>
-        <p class="fcard__bio">1974年、千葉県生まれ。20代でプリモジャパンの副社長として、数十名の会社を500人規模・ブライダルジュエリー業界シェア1位へ。2008年に株式会社あしたのチームを立ち上げ、中小企業の人事評価づくりを広げてきました。</p>
+        <p class="fcard__bio">東洋大学経営学部を卒業し、興銀リースを経て、プリモ・ジャパン副社長として人事制度・経営管理を担当。数十名の会社を500人規模へ拡大しました。2008年に株式会社あしたのチームを設立し、全国の人事評価改革を牽引。2021年、給与アップ研究所を創業しました。</p>
         <ul class="fcard__facts">
-          <li>あしたのチームを立ち上げ、全国47都道府県＋台湾・シンガポール等へ展開</li>
-          <li>中小企業<b>3,500社以上</b>の人事評価制度を構築・運用、3万社以上を支援</li>
-          <li>ビジネス書を15冊以上出版／セミナー登壇は5,000回を超える</li>
-          <li>2021年、給与アップ研究所を設立。人事評価×AIで会社を変える</li>
+          <li>全国<b>4,000社以上</b>の人事評価改革を支援（代表 累計）</li>
+          <li>あしたのチームを創業し、全国47都道府県＋アジアへ展開</li>
+          <li>評価制度づくりに携わって<b>13年以上</b>。ホテル・美容・IT・飲食など多業種を支援</li>
+          <li>ビジネス書を多数出版（下記）。&ldquo;給与を上げる経営支援&rdquo;を提唱</li>
         </ul>
       </article>
 
@@ -430,20 +459,35 @@ a{color:inherit;text-decoration:none}
         <div class="fcard__top">
           <div class="fcard__photo"><img src="data:image/jpeg;base64,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" alt="CTO 二宮 忠志郎"></div>
           <div>
-            <span class="fcard__role">CTO ／ B-ROCA 代表取締役</span>
-            <div class="fcard__name">二宮 忠志郎<span class="en">Chushiro Ninomiya</span></div>
+            <span class="fcard__role">CTO</span>
+            <div class="fcard__name">二宮 忠志郎<span class="en">Tadashiro Ninomiya</span></div>
           </div>
         </div>
         <div class="fcard__line">AIを、原理から知っている人。</div>
-        <p class="fcard__bio">早稲田大学基幹理工学部に在学中からAIの開発・コンサルティングに従事。複数のAIスタートアップと株式会社松尾研究所でエンジニアを務め、独立。研究の力と、現場で動かす実装力の両方を持っています。</p>
+        <p class="fcard__bio">早稲田大学基幹理工学部に在学中からAIの開発・コンサルティングに従事。複数のAIスタートアップと株式会社松尾研究所でエンジニアを務め、2024年に独立。研究の力と、現場で動かす実装力の両方を持っています。</p>
         <ul class="fcard__facts">
-          <li>AI（自然言語処理）の国際会議 <b>EMNLP</b> に論文が採択された実績</li>
-          <li>大規模言語モデル（LLM）を使ったシステム・サービス開発を推進</li>
-          <li>株式会社B-ROCAを立ち上げ、代表取締役に就任</li>
-          <li>2026年、給与アップ研究所CTOに就任。AI×人事評価の技術を担当</li>
+          <li>自然言語処理（NLP）のトップ国際会議 <b>EMNLP</b> に論文採択</li>
+          <li><b>松尾研究所</b>などでAI開発に従事し、2024年に独立</li>
+          <li>大規模言語モデル（LLM）のシステム・製品開発を牽引</li>
+          <li>給与アップ研究所CTOとして、AI×人事評価の技術を統括</li>
         </ul>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- MESSAGE -->
+<section class="section message" id="message">
+  <div class="wrap message__inner reveal">
+    <span class="eyebrow on-dark">MESSAGE ／ 代表メッセージ</span>
+    <h2 class="message__h">努力が、正当に報われる日本へ。<br><span class="c">AI</span>で成果を出し、評価で<span class="g">給与</span>に変える。</h2>
+    <div class="message__body">
+      <p>いま、日本は大きな転換点を迎えています。最低賃金1,500円という国家目標のもと、賃上げ促進税制やリスキリング支援など、国の政策は明確に「賃上げ」と「人への投資」へ舵を切りました。<b>賃上げは、すべての企業に求められる前提条件</b>になりつつあります。</p>
+      <p>しかし、中小・ベンチャーの現場は厳しい。「上げたくても、原資がない」「誰を、どれだけ上げるべきか、根拠を持って説明できない」。曖昧な評価のままでは、頑張った人ほど報われず、優秀な人から辞めていきます。給与を上げる鍵は、根性論ではありません。<b>「成果を正しく測り、正しく報いる仕組み」</b>――ただ、それだけです。</p>
+      <p>その仕組みを根底から変える技術が、Claude CodeをはじめとするAIです。社内に眠る日報・勤怠・売上・商談のデータを読み解き、これまで測れなかった一人ひとりの貢献を可視化する。成果をリアルタイムで評価し、給与へ連動させる<b>「高速PDCA × 評価報酬」</b>を、中小企業でも回せるようにする。これが、給与アップ研究所の役割です。</p>
+      <p>法改正はピンチではなく、本気で人に報いる会社が選ばれる最大のチャンスです。挑戦する中小・ベンチャー、そして事業を継いだ新しい経営者こそ、大企業を一気に追い抜ける。私たちは、<b>頑張った人の給与が上がる会社を、日本に一社でも多く増やします。</b></p>
+    </div>
+    <div class="message__sign">給与アップ研究所　代表取締役<b>髙橋 恭介</b></div>
   </div>
 </section>
 
@@ -491,33 +535,22 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="section__head reveal">
       <span class="eyebrow">私たちの答え</span>
-      <h2 class="sec-head">利益を出す。その原資を、給与に変える。</h2>
-      <p class="lead">AIで仕事のムダを減らし、生まれた時間とお金を利益に変える。その利益を、給与に変える。このシンプルな流れを、貴社に"実装"します。</p>
+      <h2 class="sec-head">成果を出す。評価する。給与に変える。</h2>
+      <p class="lead">Claude Codeによる業務改善で、終わらせない。成果を&ldquo;正当な評価&rdquo;と&ldquo;給与&rdquo;に変え、社員の改善意欲を引き出し、全社で「AI駆動経営」を実現します。</p>
     </div>
 
     <div class="flow reveal">
-      <div class="fstep"><div class="fstep__n">01</div><div class="fstep__t">仕事のムダを減らす</div><p class="fstep__d">くり返しの作業をAIに任せ、手間を1/3〜1/5に。</p><span class="fstep__arrow">→</span></div>
-      <div class="fstep"><div class="fstep__n">02</div><div class="fstep__t">時間とお金が生まれる</div><p class="fstep__d">空いた時間で、本来の仕事に集中できる。</p><span class="fstep__arrow">→</span></div>
-      <div class="fstep"><div class="fstep__n">03</div><div class="fstep__t">売上と利益が伸びる</div><p class="fstep__d">営業・マーケ・人事・業務で、成果を伸ばす。</p><span class="fstep__arrow">→</span></div>
-      <div class="fstep"><div class="fstep__n">04</div><div class="fstep__t">給与に変える</div><p class="fstep__d">増えた利益を原資に、賃上げへ。</p></div>
+      <div class="fstep"><div class="fstep__n">01</div><div class="fstep__t">AIで業務改善</div><p class="fstep__d">Claude Codeでマーケ・営業・制作・社内業務を効率化し、成果を生む。</p><span class="fstep__arrow">→</span></div>
+      <div class="fstep"><div class="fstep__n">02</div><div class="fstep__t">定性を定量化</div><p class="fstep__d">これまで評価軸にできなかった&ldquo;頑張り&rdquo;を、データで定量化する。</p><span class="fstep__arrow">→</span></div>
+      <div class="fstep"><div class="fstep__n">03</div><div class="fstep__t">正当に評価</div><p class="fstep__d">客観的なデータに基づき、一人ひとりの働きを公正に評価する。</p><span class="fstep__arrow">→</span></div>
+      <div class="fstep"><div class="fstep__n">04</div><div class="fstep__t">給与へ反映</div><p class="fstep__d">正当な評価を給与に反映。社員の自発的な改善を、強く促す。</p></div>
     </div>
 
     <div class="reveal-box reveal">
-      <span class="eyebrow on-dark">WHY 2.0736</span>
-      <h3>なぜ、利益が「<span class="num">2.0736</span>倍」になるのか。</h3>
-      <p>営業・マーケ・人事・業務。利益を生む4つの場所を、それぞれ<b>20%（1.2倍）</b>ずつ良くする。<br>1.2 × 1.2 × 1.2 × 1.2 ＝ <b>2.0736</b>。1つだけでは届かない数字に、4つの掛け算で届く。これが私たちの「<b>四倍速経営</b>」です。</p>
-      <div class="eq">
-        <span class="eq__chip"><span class="dom">営業</span><span class="mul">×1.2</span></span>
-        <span class="eq__op">×</span>
-        <span class="eq__chip"><span class="dom">マーケ</span><span class="mul">×1.2</span></span>
-        <span class="eq__op">×</span>
-        <span class="eq__chip"><span class="dom">人事</span><span class="mul">×1.2</span></span>
-        <span class="eq__op">×</span>
-        <span class="eq__chip"><span class="dom">業務</span><span class="mul">×1.2</span></span>
-        <span class="eq__op">＝</span>
-        <span class="eq__res">2.0736<small>倍</small></span>
-      </div>
-      <p class="note">※ 数字はモデルケースです。初回のご相談で、貴社の実情に合わせて現実的な目標を一緒に決めます。</p>
+      <span class="eyebrow on-dark">RESULT</span>
+      <h3>全社員が価値を実感し、改善が<span class="num">自走</span>し続ける。</h3>
+      <p>成果が出た人が、正しく報われる。だから社員は自ら動き出し、その改善がまた新しい成果を生む。規模の大小に関係なく回る、これが「<b>AI駆動経営</b>」です。<br><b>高速PDCA × 評価報酬</b>を、中小企業でも。</p>
+      <p class="note">※ どこから始めるかは、初回のご相談で、貴社の実情に合わせて一緒に決めます。</p>
     </div>
   </div>
 </section>
@@ -528,7 +561,7 @@ a{color:inherit;text-decoration:none}
     <div class="section__head reveal">
       <span class="eyebrow">4 つの領域</span>
       <h2 class="sec-head">会社の成長を、4つの切り口で支える。</h2>
-      <p class="lead">Claude Code × MCP を土台に、4つの領域を横断して、成果が出るまで伴走します。</p>
+      <p class="lead">Claude Code × MCP を土台に、4つの領域を横断して、成果が出るまで伴走します。各領域の詳細は、専用ページでご覧いただけます。</p>
     </div>
     <div class="svc__grid">
       <article class="scard reveal">
@@ -537,6 +570,7 @@ a{color:inherit;text-decoration:none}
         <div class="scard__h">集客・発信を、自動で回す。</div>
         <p class="scard__txt">SNSの投稿を月100本のペースで作って運用代行。広告に頼りすぎず、見込み客を増やします。反応を毎日見て、すばやく改善します。</p>
         <div class="scard__kpi"><span class="kpi">問い合わせ +40%</span><span class="kpi">広告の効率 +20%</span></div>
+        <a class="scard__link" href="marketing.html">詳細を見る<span class="arr">→</span></a>
       </article>
 
       <article class="scard reveal">
@@ -545,14 +579,16 @@ a{color:inherit;text-decoration:none}
         <div class="scard__h">商談を録るだけで、提案書まで。</div>
         <p class="scard__txt">商談の録画から、議事録と提案書の下書きを3分で作成。受注の見込み（ヨミ）も数字で判定し、成約率と作業時間を両立します。</p>
         <div class="scard__kpi"><span class="kpi">商談数 +50%</span><span class="kpi">受注率 +10pt</span><span class="kpi">客単価 +10%</span></div>
+        <a class="scard__link" href="sales.html">詳細を見る<span class="arr">→</span></a>
       </article>
 
       <article class="scard scard--emph reveal">
         <div class="scard__dom">③ HR / 人事</div>
         <div class="scard__cat">人事｜AI人事評価</div>
         <div class="scard__h">成果を評価し、給与に変える。</div>
-        <p class="scard__txt">「成果 → 評価 → 給与」の流れを設計し、採った人が辞めない会社へ。<b>3,500社の人事評価を支えてきた知見</b>を、AIで作り直します。</p>
+        <p class="scard__txt">「成果 → 評価 → 給与」の流れを設計し、採った人が辞めない会社へ。<b>4,000社の人事評価を支えてきた知見</b>を、AIで作り直します。</p>
         <div class="scard__kpi"><span class="kpi">評価の納得度 +30pt</span><span class="kpi">早期離職 -5pt</span></div>
+        <a class="scard__link" href="hr.html">詳細を見る<span class="arr">→</span></a>
       </article>
 
       <article class="scard reveal">
@@ -561,6 +597,7 @@ a{color:inherit;text-decoration:none}
         <div class="scard__h">現場を録るだけで、ムダを削る。</div>
         <p class="scard__txt">業務を一度棚卸しして「続ける／減らす／任せる／やめる」を判定。マニュアル化と、電話・接客の全件チェックで、ルーチン作業を圧縮します。</p>
         <div class="scard__kpi"><span class="kpi">ルーチン業務 -40%</span><span class="kpi">改善スピード 10倍</span></div>
+        <a class="scard__link" href="operations.html">詳細を見る<span class="arr">→</span></a>
       </article>
     </div>
   </div>
@@ -622,10 +659,34 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- CTA -->
+<!-- VOICE / 事例・ロゴ（仮枠） -->
+<section class="section voice" id="voice">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <span class="eyebrow">導入事例・お客様の声</span>
+      <h2 class="sec-head">多様な業種で、成果が生まれています。</h2>
+      <p class="lead">ホテル・美容・IT・飲食・不動産など、業種を横断して支援しています。導入企業ロゴと事例は、順次掲載予定です。</p>
+    </div>
+    <div class="logos reveal" aria-label="導入企業ロゴ（準備中）">
+      <span class="logo-ph">LOGO</span>
+      <span class="logo-ph">LOGO</span>
+      <span class="logo-ph">LOGO</span>
+      <span class="logo-ph">LOGO</span>
+      <span class="logo-ph">LOGO</span>
+      <span class="logo-ph">LOGO</span>
+    </div>
+    <div class="voice__grid reveal">
+      <div class="vcard"><span class="badge">CASE 01</span><p>導入事例を準備中です。<br>近日公開いたします。</p></div>
+      <div class="vcard"><span class="badge">CASE 02</span><p>導入事例を準備中です。<br>近日公開いたします。</p></div>
+      <div class="vcard"><span class="badge">CASE 03</span><p>導入事例を準備中です。<br>近日公開いたします。</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>あなたの会社の利益も、<span class="num">2.0736</span>倍へ。</h2>
-    <p>Claude Codeを入れて、利益を出し、給与に変える。まずは無料のご相談から。</p>
+    <h2>Claude Codeで成果を出し、評価で給与に変える。</h2>
+    <p>まずは無料相談・課題診断から。御社の業務・評価・給与に合わせて、どこから始めるかをご提案します。</p>
     <div class="cta__btns">
       <a href="#" class="btn btn--gold">無料で相談する<span class="arr">→</span></a>
       <a href="#" class="btn btn--ghost">資料をダウンロード</a>
@@ -646,25 +707,26 @@ a{color:inherit;text-decoration:none}
           </svg>
           給与アップ研究所
         </div>
-        <p>中小企業の利益を2倍にする、Claude Code経営パートナー。AIで利益を出し、その原資を給与に変える会社です。</p>
+        <p>中小・ベンチャーのAI駆動経営 伴走パートナー。Claude Codeで成果を出し、評価で給与に変える会社です。</p>
       </div>
       <div class="footer__col">
         <h4>Services</h4>
         <ul>
-          <li><a href="#services">マーケ｜AI集客</a></li>
-          <li><a href="#services">営業｜商談AI</a></li>
-          <li><a href="#services">人事｜AI人事評価</a></li>
-          <li><a href="#services">業務｜業務改善</a></li>
+          <li><a href="marketing.html">マーケ｜AI集客</a></li>
+          <li><a href="sales.html">営業｜商談AI</a></li>
+          <li><a href="hr.html">人事｜AI人事評価</a></li>
+          <li><a href="operations.html">業務｜業務改善</a></li>
         </ul>
       </div>
       <div class="footer__col">
         <h4>Company</h4>
         <p class="footer__info">
-          株式会社給与アップ研究所（Salary-Up-Labo）<br>
-          設立：2021年1月8日<br>
-          代表取締役：髙橋 恭介<br>
+          株式会社給与アップ研究所（SALARY-UP LABORATORY）<br>
+          設立：2021年1月8日／資本金：37,750,000円<br>
+          代表取締役：髙橋 恭介　CTO：二宮 忠志郎<br>
           東京都渋谷区恵比寿南一丁目20番15号<br>
-          アトリウム恵比寿南一丁目ビル1階
+          アトリウム恵比寿南一丁目ビル1階<br>
+          事業内容：AI×人事評価制度構築・伴走支援／Claude Code×業務改善コンサル／AI人事評価コンサルタント認定講座
         </p>
       </div>
     </div>
